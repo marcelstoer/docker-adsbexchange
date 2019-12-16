@@ -30,4 +30,5 @@ The hardware was the easy part. I bought a [FlightAware Pro Stick Plus](https://
 tbc...
 
 ## Pending item
-Dockerize the ADS-B Exchange stats application [https://github.com/adsbxchange/adsbexchange-stats](https://github.com/adsbxchange/adsbexchange-stats).
+- Implement (cross-platform) CI to make the images available on Docker Hub without having to build them on the device. Building the MLAT image on my RPi 2B took quite a while.
+- Dockerize the ADS-B Exchange stats application [https://github.com/adsbxchange/adsbexchange-stats](https://github.com/adsbxchange/adsbexchange-stats).
