@@ -1,0 +1,35 @@
+version: '3'
+services:
+    dump1090:
+        restart: always
+        devices:
+            - /dev/bus/usb
+        container_name: dump1090
+        ports:
+            - '8080:8080'
+        image: 'jraviles/dump1090:latest'
+
+    adsbexchange-docker-feed:
+        restart: always
+        environment:
+            - 'INPUT=decoder:30005'
+        links:
+            - 'dump1090:decoder'
+        container_name: adsbexchange-feed
+        image: 'marcelstoer/adsbexchange-docker-feed:latest'
+
+    adsbexchange-docker-mlat:
+        restart: always
+        environment:
+            - 'INPUT=decoder:30005'
+            - 'MLAT_RESULTS=decoder:30104'
+            # add the geo coordinates of your ADS-B reeiver
+            - RECEIVER_LATITUDE=**.*****
+            - RECEIVER_LONGITUDE=**.******
+            - RECEIVER_ALTITUDE=***
+            # identify your receiver with something unique
+            - RECEIVER_NAME=XXX***XXX
+        links:
+            - 'dump1090:decoder'
+        container_name: adsbexchange-mlat
+        image: 'marcelstoer/adsbexchange-docker-mlat:latest'
