@@ -1,24 +1,25 @@
 # ADS-B Exchange Docker
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/marcelstoer/docker-nodemcu-build/blob/master/LICENSE)
 
+ADS-B Exchange feeder & MLAT Docker images for Arm (e.g. Raspberry Pi) and x86-64 architectures. Also contains a Docker Compose file that runs all required containers for ADS-B Exchange in one go.
+
 ## tl;dr
 
 ```
 $ git clone https://github.com/marcelstoer/adsbexchange-docker
 $ vi docker-compose.yaml
 ```
-You need to edit `docker-compose.yaml` to add geo coordinates of your receiver and its name.
+You need to edit [`docker-compose.yaml`](docker-compose.yaml) to add geo coordinates of your receiver and its name.
 
 ```
 $ docker-compose up -d
 ```
 
-This runs three containers:
+This will pull and start three containers:
 
-- [dump1090-fa](https://github.com/flightaware/dump1090) decoder from [https://github.com/jeanralphaviles/dump1090-docker](https://github.com/jeanralphaviles/dump1090-docker)
-- My [ADS-B Exchange feed](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-docker-feed), the classic beast feeder, source in this repo, multi-arch image on Docker Hub
-- My [ADS-B Exchange MLAT](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-docker-mlat), the optional MLAT feeder, source in this repo, multi-arch image on Docker Hub
-
+- [dump1090-fa](https://github.com/flightaware/dump1090); the ADS-B decoder from [https://github.com/jeanralphaviles/dump1090-docker](https://github.com/jeanralphaviles/dump1090-docker)
+- My [ADS-B Exchange feed](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-docker-feed); the classic beast feeder, source in this repo, multi-arch image on Docker Hub
+- My [ADS-B Exchange MLAT](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-docker-mlat); the optional MLAT feeder, source in this repo, multi-arch image on Docker Hub
 
 The first container also starts PiAware Skyview at [http://localhost:8080](http://localhost:8080)
 ![Skyview](images/PiAware-Skyview.jpg)
