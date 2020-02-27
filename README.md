@@ -1,4 +1,6 @@
 # ADS-B Exchange Docker
+![Docker Pulls](https://img.shields.io/docker/pulls/marcelstoer/adsbexchange-docker-feed?label=beast%20feeder%20docker%20pulls)
+![Docker Pulls](https://img.shields.io/docker/pulls/marcelstoer/adsbexchange-docker-mlat?label=MLAT%20feeder%20docker%20pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/marcelstoer/docker-nodemcu-build/blob/master/LICENSE)
 
 ADS-B Exchange feeder & MLAT Docker images for Arm (e.g. Raspberry Pi) and x86-64 architectures. Also contains a Docker Compose file that runs all required containers for ADS-B Exchange in one go.
