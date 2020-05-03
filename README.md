@@ -1,14 +1,14 @@
 # ADS-B Exchange Docker
-![Docker Pulls](https://img.shields.io/docker/pulls/marcelstoer/adsbexchange-docker-feed?label=beast%20feeder%20docker%20pulls)
-![Docker Pulls](https://img.shields.io/docker/pulls/marcelstoer/adsbexchange-docker-mlat?label=MLAT%20feeder%20docker%20pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/marcelstoer/docker-nodemcu-build/blob/master/LICENSE)
+![Docker Pulls](https://img.shields.io/docker/pulls/marcelstoer/adsbexchange-feed?label=beast%20feeder%20docker%20pulls)
+![Docker Pulls](https://img.shields.io/docker/pulls/marcelstoer/adsbexchange-mlat?label=MLAT%20feeder%20docker%20pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/marcelstoer/docker-adsbexchange/blob/master/LICENSE)
 
 ADS-B Exchange feeder & MLAT Docker images for Arm (e.g. Raspberry Pi) and x86-64 architectures. Also contains a Docker Compose file that runs all required containers for ADS-B Exchange in one go.
 
 ## tl;dr
 
 ```
-$ git clone https://github.com/marcelstoer/adsbexchange-docker
+$ git clone https://github.com/marcelstoer/docker-adsbexchange
 $ vi docker-compose.yaml
 ```
 You need to edit [`docker-compose.yaml`](docker-compose.yaml) to add geo coordinates of your receiver and its name.
@@ -20,8 +20,8 @@ $ docker-compose up -d
 This will pull and start three containers:
 
 - [dump1090-fa](https://github.com/flightaware/dump1090); the ADS-B decoder from [https://github.com/jeanralphaviles/dump1090-docker](https://github.com/jeanralphaviles/dump1090-docker)
-- My [ADS-B Exchange feed](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-docker-feed); the classic beast feeder, source in this repo, multi-arch image on Docker Hub
-- My [ADS-B Exchange MLAT](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-docker-mlat); the optional MLAT feeder, source in this repo, multi-arch image on Docker Hub
+- My [ADS-B Exchange feed](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-feed); the classic beast feeder, source in this repo, multi-arch image on Docker Hub
+- My [ADS-B Exchange MLAT](https://hub.docker.com/repository/docker/marcelstoer/adsbexchange-mlat); the optional MLAT feeder, source in this repo, multi-arch image on Docker Hub
 
 The first container also starts PiAware Skyview at [http://localhost:8080](http://localhost:8080)
 ![Skyview](images/PiAware-Skyview.jpg)
@@ -52,14 +52,12 @@ tbc...
 If you want to tinker with the Docker files and build your own images follow the path below.
 
 ```
-$ git clone https://github.com/marcelstoer/adsbexchange-docker
-$ cd adsbexchange-docker
-$ cd adsbexchange-docker-feed
-$ docker build -t adsbexchange-docker-feed .
-$ docker run --rm -d -e "INPUT=decoder:30005" —link dump1090:decoder --name adsbexchange-feed adsbexchange-docker-feed
-$ cd ../adsbexchange-docker-mlat
-$ docker build -t adsbexchange-docker-mlat .
-$ docker run --rm -d -e "INPUT=decoder:30005" -e "MLAT_RESULTS=decoder:30104" -e "RECEIVER_LATITUDE=nn.mmmmm" -e "RECEIVER_LONGITUDE=nn.mmmmm" -e "RECEIVER_ALTITUDE=nnnn" -e "RECEIVER_NAME=my-fantastic-ADS-B-receiver" --link dump1090:decoder --name adsbexchange-mlat adsbexchange-docker-mlat
+$ git clone https://github.com/marcelstoer/docker-adsbexchange
+$ cd docker-adsbexchange
+$ docker build -t adsbexchange-feed adsbexchange-feed
+$ docker run --rm -d -e "INPUT=decoder:30005" —link dump1090:decoder adsbexchange-feed
+$ docker build -t adsbexchange-mlat adsbexchange-mlat
+$ docker run --rm -d -e "INPUT=decoder:30005" -e "MLAT_RESULTS=decoder:30104" -e "RECEIVER_LATITUDE=nn.mmmmm" -e "RECEIVER_LONGITUDE=nn.mmmmm" -e "RECEIVER_ALTITUDE=nnnn" -e "RECEIVER_NAME=my-fantastic-ADS-B-receiver" --link dump1090:decoder adsbexchange-mlat
 ```
 
 ## Pending item

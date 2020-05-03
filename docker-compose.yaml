@@ -16,7 +16,7 @@ services:
         links:
             - 'dump1090:decoder'
         container_name: adsbexchange-feed
-        image: 'marcelstoer/adsbexchange-docker-feed:latest'
+        image: 'marcelstoer/adsbexchange-feed:latest'
 
     adsbexchange-docker-mlat:
         restart: always
@@ -32,4 +32,4 @@ services:
         links:
             - 'dump1090:decoder'
         container_name: adsbexchange-mlat
-        image: 'marcelstoer/adsbexchange-docker-mlat:latest'
+        image: 'marcelstoer/adsbexchange-mlat:latest'
