@@ -9,7 +9,7 @@ services:
             - '8080:8080'
         image: 'jraviles/dump1090:latest'
 
-    adsbexchange-docker-feed:
+    adsbexchange-feed:
         restart: always
         environment:
             - 'INPUT=decoder:30005'
@@ -18,7 +18,7 @@ services:
         container_name: adsbexchange-feed
         image: 'marcelstoer/adsbexchange-feed:latest'
 
-    adsbexchange-docker-mlat:
+    adsbexchange-mlat:
         restart: always
         environment:
             - 'INPUT=decoder:30005'
