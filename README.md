@@ -5,6 +5,14 @@
 
 ADS-B Exchange feeder & MLAT Docker images for Arm (e.g. Raspberry Pi) and x86-64 architectures. Also contains a Docker Compose file that runs all required containers for ADS-B Exchange in one go.
 
+----
+
+**EOL** * **EOL** * **EOL** * **EOL** * **EOL** * **EOL** * **EOL**
+
+I recommend https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder. As ADS-B Exchange has gone rogue, I now feed [OpenSky](https://opensky-network.org/) and [ADSB.lol](https://www.adsb.lol/docs/overview/introduction/), a service started by the awsome [@iakat](https://github.com/iakat).
+
+----
+
 ## tl;dr
 
 ```
